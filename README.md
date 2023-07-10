@@ -8,15 +8,15 @@
     <li>
         <p>If you given this input to the website.</p>
         <pre>
-            +-------+------+------+-------------+--------+----------+
-            | empno | name | desg | dept        | gender | salary   |
-            +-------+------+------+-------------+--------+----------+
-            |     1 | abc  | HR   | Marketing   | F      | 25000.00 |
-            |     2 | nhal | HR   | Production  | M      |  5000.00 |
-            |     3 | Anu  | HR   | Sales       | F      | 30000.00 |
-            |     4 | ABhi | HR   | Marketing   | M      | 35000.00 |
-            |     5 | Arun | HR   | Advertising | M      | 25000.00 |
-            +-------+------+------+-------------+--------+----------+
+            +-------+------+------+----------+--------+----------+
+            |empno |name |desg |dept   |gender |salary   |
+            +-------+------+------+-----------+--------+----------+
+            | 1 | abc| HR | Marketing  | F | 25000.00 |
+            | 2 | nhal | HR | Production  | M |  5000.00 |
+            | 3 | Anu | HR | Sales | F | 30000.00 |
+            | 4 | ABhi | HR | Marketing  | M | 35000.00 |
+            | 5 | Arun | HR | Advertising | M | 25000.00 |
+            +-------+------+------+-----------+--------+---------+
         </pre>
     </li>
     <li>
@@ -35,5 +35,8 @@
     </li>
     <li>After, paste the output to Visual Studio Code Text editor.</li>
     <li>Then copy and paste it into the word</li>
-
 </ul>
+<div style="background-color: #ffcccb; color:red;">
+    <h2>Note</h2>
+    <p>This will only work in <code>consolas</code> font</p>
+</div>
