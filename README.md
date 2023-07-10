@@ -34,6 +34,6 @@
         </pre>
     </li>
     <li>After, paste the output to Visual Studio Code Text editor.</li>
-    <li></li>Then copy and paste it into the word</li>
+    <li>Then copy and paste it into the word</li>
 
 </ul>
