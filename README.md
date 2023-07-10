@@ -37,18 +37,24 @@
     <li>Then copy and paste it into the word</li>
 </ul>
 <div>
-    <h2>Note ⚠️:-</h2>
+    <h2>⚠️Note:-</h2>
     <p>This will only work in <code>consolas</code> font</p>
 </div>
 <div>
-  <h3>More Information</h3>
+  <h2>More Information</h2>
   <p>we have included the <code>settings.json</code> and <code>script.json</code> in the border repository.</p>
-  <div>
-    <h5>settings.json</h5>
-    <p>It include the table example table of <code>database_table</code> and the font used in the web page <code>Times New Roman</code></p>
-  </div>
-  <div>
-    <h5>script.json</h5>
-    <p>It include the working of <code>Index.html's</code> script. The script converted in the form of <code>JSON</code> and stored in the file to easily understand for a human.</p>
-  </div>
+  <ul>
+   <li>
+    <div>
+      <h3>settings.json</h3>
+      <p>It include the table example table of <code>database_table</code> and the font used in the web page <code>Times New Roman</code></p>
+    </div>
+   </li>
+   <li>
+    <div>
+      <h3>script.json</h3>
+      <p>It include the working of <code>Index.html's</code> script. The script converted in the form of <code>JSON</code> and stored in the file to easily understand for a human.</p>
+    </div>
+   </li>
+  </ul>
 </div>
