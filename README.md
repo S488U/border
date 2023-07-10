@@ -37,7 +37,7 @@
     <li>Then copy and paste it into the word</li>
 </ul>
 <div>
-    <h2>Note:-</h2>
+    <h2>Note ⚠️:-</h2>
     <p>This will only work in <code>consolas</code> font</p>
 </div>
 <div>
