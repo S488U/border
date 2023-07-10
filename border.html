@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @font-face {
+      font-family: "times-new-roman";
+      src: url("./times-new-roman");
+    }
+    * {
+      font-family: "times-new-roman";
+    }
+    pre {
+      white-space: pre;
+      font-family: "times-new-roman";
+    }
+  </style>
+</head>
+<body>
+  <textarea id="inputText" rows="10" cols="50" placeholder="Paste the table here"></textarea><br>
+  <a href="border.html">border.html</a>
+  <a href="b2.html">b2.html</a>
+  <a href="b3.html">b3.html</a>
+  <a href="b4.html">b4.html</a>
+  <a href="b4.php">b4.php</a>
+  <a href="border copy.html">border copy.html</a>
+  <a href="script.json">script.json</a>
+  <a href="settings.json">settings.json</a>
+  <br>
+  <button onclick="adjustTable()">Adjust Table</button><br><br>
+  <pre id="outputTable"></pre>
+
+  <script>
+    function adjustTable() {
+      var inputText = document.getElementById("inputText").value;
+      var tableLines = inputText.split("\n");
+      var tableOutput = "";
+
+      var columnWidths = getColumnWidths(tableLines);
+
+      for (var i = 0; i < tableLines.length; i++) {
+        var line = tableLines[i].trim();
+
+        if (line.startsWith("|") && line.endsWith("|")) {
+          var row = line.substring(1, line.length - 1).trim();
+          var columns = row.split("|");
+
+          if (i === 0 || i === tableLines.length - 1) {
+            tableOutput += createBorder(columnWidths);
+          }
+
+          for (var j = 0; j < columns.length; j++) {
+            var content = columns[j].trim();
+            tableOutput += "| " + padContent(content, columnWidths[j]) + " ";
+          }
+
+          tableOutput += "|\n";
+
+          if (i === 0 || i === tableLines.length - 1) {
+            tableOutput += createBorder(columnWidths);
+          }
+        }
+      }
+
+      document.getElementById("outputTable").textContent = tableOutput;
+    }
+
+    function getColumnWidths(tableLines) {
+      var columnWidths = [];
+
+      for (var i = 0; i < tableLines.length; i++) {
+        var line = tableLines[i].trim();
+
+        if (line.startsWith("|") && line.endsWith("|")) {
+          var row = line.substring(1, line.length - 1).trim();
+          var columns = row.split("|");
+
+          for (var j = 0; j < columns.length; j++) {
+            var content = columns[j].trim();
+            var contentLength = content.length;
+
+            if (!columnWidths[j] || contentLength > columnWidths[j]) {
+              columnWidths[j] = contentLength;
+            }
+          }
+        }
+      }
+
+      return columnWidths;
+    }
+
+    function padContent(content, width) {
+      var paddedContent = content.trim();
+
+      while (paddedContent.length < width) {
+        paddedContent += " ";
+      }
+
+      return paddedContent;
+    }
+
+    function createBorder(columnWidths) {
+      var border = "+";
+
+      for (var i = 0; i < columnWidths.length; i++) {
+        border += "-".repeat(columnWidths[i] + 2); // Adjust the number of dashes to match the column width
+        border += "+";
+      }
+
+      return border + "\n";
+    }
+  </script>
+</body>
+</html>

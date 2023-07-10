@@ -1,0 +1,44 @@
+[
+    {
+      "fonts": {
+        "editor.fontFamily": "Consolas, 'Courier New', monospace"
+      }
+    },
+    {
+      "employee": {
+        "columns": [
+          {
+            "column_name": "EmpNo",
+            "data_type": "Int",
+            "constraints": "Primary key, auto increment"
+          },
+          {
+            "column_name": "Name",
+            "data_type": "Varchar(25)",
+            "constraints": ""
+          },
+          {
+            "column_name": "Designation",
+            "data_type": "Varchar(20)",
+            "constraints": ""
+          },
+          {
+            "column_name": "Dept",
+            "data_type": "Varchar(25)",
+            "constraints": ""
+          },
+          {
+            "column_name": "Gender",
+            "data_type": "Char(1)",
+            "constraints": "'M' or 'F'"
+          },
+          {
+            "column_name": "Salary",
+            "data_type": "Decimal(9,2)",
+            "constraints": ""
+          }
+        ]
+      }
+    }
+  ]
+  

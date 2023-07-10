@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    table {
+      border-collapse: collapse;
+      font-family: Arial, sans-serif;
+    }
+
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <textarea id="inputText" rows="10" cols="50" placeholder="Paste the table here"></textarea><br>
+  <a href="border.html">border.html</a>
+  <a href="b2.html">b2.html</a>
+  <a href="b3.html">b3.html</a>
+  <a href="b4.html">b4.html</a>
+  <a href="b4.php">b4.php</a>
+  <a href="border copy.html">border copy.html</a>
+  <a href="script.json">script.json</a>
+  <a href="settings.json">settings.json</a>
+  <button onclick="copyTable()">Copy Table</button><br><br>
+  <table id="outputTable"></table>
+
+  <script>
+    function copyTable() {
+      var outputTable = document.getElementById("outputTable");
+      var range = document.createRange();
+      range.selectNode(outputTable);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+      document.execCommand("copy");
+      window.getSelection().removeAllRanges();
+    }
+
+    function adjustTable() {
+      var inputText = document.getElementById("inputText").value;
+      var tableLines = inputText.split("\n");
+      var tableOutput = '<tr>';
+
+      for (var i = 0; i < tableLines.length; i++) {
+        var line = tableLines[i].trim();
+
+        if (line.startsWith("|") && line.endsWith("|")) {
+          var row = line.substring(1, line.length - 1).trim();
+          var columns = row.split("|");
+
+          for (var j = 0; j < columns.length; j++) {
+            var content = columns[j].trim();
+            tableOutput += '<td>' + content + '</td>';
+          }
+
+          tableOutput += '</tr><tr>';
+        }
+      }
+
+      tableOutput += '</tr>';
+
+      document.getElementById("outputTable").innerHTML = tableOutput;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+{
+    "function": "adjustTable",
+    "parameters": [
+      "inputText",
+      "tableLines",
+      "tableOutput",
+      "columnWidths"
+    ],
+    "body": [
+      {
+        "type": "variable",
+        "name": "columnWidths",
+        "value": "getColumnWidths(tableLines)"
+      },
+      {
+        "type": "for",
+        "iterator": "i",
+        "start": "0",
+        "end": "tableLines.length",
+        "body": [
+          {
+            "type": "if",
+            "condition": "line.startsWith(\"|\") && line.endsWith(\"|\")",
+            "body": [
+              {
+                "type": "variable",
+                "name": "row",
+                "value": "line.substring(1, line.length - 1).trim()"
+              },
+              {
+                "type": "variable",
+                "name": "columns",
+                "value": "row.split(\"|\")"
+              },
+              {
+                "type": "if",
+                "condition": "i === 0 || i === tableLines.length - 1",
+                "body": [
+                  {
+                    "type": "variable",
+                    "name": "tableOutput",
+                    "value": "tableOutput + createBorder(columnWidths)"
+                  }
+                ]
+              },
+              {
+                "type": "for",
+                "iterator": "j",
+                "start": "0",
+                "end": "columns.length",
+                "body": [
+                  {
+                    "type": "variable",
+                    "name": "content",
+                    "value": "columns[j].trim()"
+                  },
+                  {
+                    "type": "variable",
+                    "name": "paddedContent",
+                    "value": "padContent(content, columnWidths[j])"
+                  },
+                  {
+                    "type": "assign",
+                    "target": "tableOutput",
+                    "value": "tableOutput + \"| \"" + paddedContent + " \" "
+                  }
+                ]
+              },
+              {
+                "type": "if",
+                "condition": "i === 0 || i === tableLines.length - 1",
+                "body": [
+                  {
+                    "type": "variable",
+                    "name": "tableOutput",
+                    "value": "tableOutput + createBorder(columnWidths)"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "assign",
+        "target": "document.getElementById(\"outputTable\").textContent",
+        "value": "tableOutput"
+      }
+    ]
+  }
+  

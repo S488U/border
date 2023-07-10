@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<head>
+  <style>
+    pre {
+      white-space: pre;
+      font-family: monospace;
+    }
+  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>  
+</head>
+<body>
+  <textarea id="inputText" rows="10" cols="50" placeholder="Paste the table here" class="w-full bg-gray-100 p-2 rounded-lg focus:outline-none">
+  </textarea>
+  <a href="border.html" class="text-blue-500 hover:text-blue-700 px-2 py-1 rounded-lg">border.html</a>
+  <a href="b2.html" class="text-blue-500 hover:text-blue-700 px-2 py-1 rounded-lg">b2.html</a>
+  <a href="b3.html" class="text-blue-500 hover:text-blue-700 px-2 py-1 rounded-lg">b3.html</a>
+  <a href="b4.html" class="text-blue-500 hover:text-blue-700 px-2 py-1 rounded-lg">b4.html</a>
+  <a href="b4.php" class="text-blue-500 hover:text-blue-700 px-2 py-1 rounded-lg">b4.php</a>
+  <a href="border copy.html" class="text-blue-500 hover:text-blue-700 px-2 py-1 rounded-lg">border copy.html</a>
+  <a href="script.json" class="text-blue-500 hover:text-blue-700 px-2 py-1 rounded-lg">script.json</a>
+  <a href="settings.json" class="text-blue-500 hover:text-blue-700 px-2 py-1 rounded-lg">settings.json</a>
+  <button onclick="copyTable()" class="bg-blue-500 text-white p-2 rounded-lg mt-2">Copy Table</button>
+  <pre id="outputTable" class="bg-gray-100 p-2 rounded-lg"></pre>
+
+  <script>
+    function copyTable() {
+      var outputTable = document.getElementById("outputTable");
+      var range = document.createRange();
+      range.selectNode(outputTable);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+      document.execCommand("copy");
+      window.getSelection().removeAllRanges();
+    }
+
+    function adjustTable() {
+      var inputText = document.getElementById("inputText").value;
+      var tableLines = inputText.split("\n");
+      var tableOutput = "";
+
+      for (var i = 0; i < tableLines.length; i++) {
+        var line = tableLines[i].trim();
+
+        if (line.startsWith("|") && line.endsWith("|")) {
+          var row = line.substring(1, line.length - 1).trim();
+          var columns = row.split("|");
+
+          if (i === 0 || i === tableLines.length - 1) {
+            tableOutput += createBorder(columns.length);
+          }
+
+          for (var j = 0; j < columns.length; j++) {
+            var content = columns[j].trim();
+            tableOutput += "| " + padContent(content) + " ";
+          }
+
+          tableOutput += "|\n";
+
+          if (i === 0 || i === tableLines.length - 1) {
+            tableOutput += createBorder(columns.length);
+          }
+        }
+      }
+
+      document.getElementById("outputTable").textContent = tableOutput;
+    }
+
+    function padContent(content) {
+      var maxLength = 15;
+      var paddedContent = content;
+
+      if (paddedContent.length < maxLength) {
+        var spacesToAdd = maxLength - paddedContent.length;
+        var leftSpaces = Math.floor(spacesToAdd / 2);
+        var rightSpaces = spacesToAdd - leftSpaces;
+
+        paddedContent = " ".repeat(leftSpaces) + paddedContent + " ".repeat(rightSpaces);
+      }
+
+      return paddedContent;
+    }
+
+    function createBorder(columnCount) {
+      var border = "+";
+
+      for (var i = 0; i < columnCount; i++) {
+        border += "-".repeat(17); // Adjust the number of dashes to match the column width
+        border += "+";
+      }
+
+      return border + "\n";
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

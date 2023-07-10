@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editor</title>
+  <style>
+    body {
+      background-color: white;
+      font-size: 12px;
+    }
+    textarea {
+      width: 100%;
+      height: 500px;
+    }
+  </style>
+</head>
+<body>
+  <textarea id="editor"></textarea>
+  <a href="border.html">border.html</a>
+    <a href="b2.html">b2.html</a>
+    <a href="b3.html">b3.html</a>
+    <a href="b4.html">b4.html</a>
+    <a href="b4.php">b4.php</a>
+    <a href="border copy.html">border copy.html</a>
+    <a href="script.json">script.json</a>
+    <a href="settings.json">settings.json</a>
+  <script>
+  function rearrange_spaces() {
+    var text = document.getElementById("editor").value;
+    text = text.replace(/\s+/g, " ");
+    text = text.replace(/\t/g, "    ");
+    document.getElementById("editor").value = text;
+  }
+  </script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+  $(document).ready(function() {
+    $("#rearrange_spaces").click(function() {
+      rearrange_spaces();
+    });
+  });
+  </script>
+</body>
+</html>
