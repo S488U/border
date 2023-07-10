@@ -5,7 +5,7 @@
 <p>Or You can use the web in this link: -</p> 
 <a href="https://s488u.github.io/border">https://s488u.github.io/border</a>
 <p>This web is hosted under the Github Server.</p>
-<h3><u>For use in Your Local Machine: - </u></h3>
+<h2><u>For use in Your Local Machine: - </u></h2>
 <ul>
     <li>Clone the repository to your local machine.</li>
     <li>Open the <code>index.html</code> on your browser.</li>
